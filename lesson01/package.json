@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  },
+  "name": "lesson01",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "tsc": "tsc ./node_modules/typescript/bin/tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
