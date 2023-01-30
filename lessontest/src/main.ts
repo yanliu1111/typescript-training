@@ -1,5 +1,5 @@
 /* lesson 1
-let username = "Greg";
+let username = "Bob";
 console.log(username);
 
 let a = 12;
@@ -25,7 +25,7 @@ let isActive: boolean | number | string;
 let re: RegExp = /\w+/g;
 
 lesson 3
-*/
+
 let stringArr = ["one", "hey", "Dave"];
 let guitar = ["strat", "Les Paul", 5150];
 let mixData = ["EVH", 1984, true];
@@ -60,7 +60,7 @@ let evh: Guitarist = {
   albums: [1984, 5150, "OU812", "For Unlawful Carnal Knowledge"],
 };
 
-//lowercase? Type 'Guitarist' has capital letter 'G'
+//lowercase??? Type 'Guitarist' has capital letter 'G'
 let jp: Guitarist = {
   name: "Jimmy",
   active: true,
@@ -88,3 +88,100 @@ enum Grade {
   A,
 }
 console.log(Grade.U);
+
+lesson 4 functions
+*/
+
+//Type aliases
+type stringOrNum = string | number;
+
+type stringOrNumberArray = (string | number)[];
+
+//use type alias in other type alias
+type Guitarist = {
+  name?: string;
+  active?: boolean;
+  albums: stringOrNumberArray;
+};
+
+type UserId = stringOrNum;
+//literal types
+let myName: "Yan";
+let userName: "Yan" | "Bob" | "Dave";
+userName = "Yan";
+
+//functions
+const add = (a: number, b: number): number => {
+  return a + b;
+};
+
+//void???
+const logMessage = (message: any): void => {
+  console.log(message);
+  //   return 54;
+};
+//void is the same as not returning anything
+// console.log("hello");
+// console.log(add(1, 2));
+
+const subtract = (a: number, b: number): number => a - b;
+type mathFunc = (a: number, b: number) => number;
+// interface mathFunc {
+//   (a: number, b: number): number;
+// }
+
+let multiply: mathFunc = (a: number, b: number): number => a * b;
+
+//optional parameters
+const addAll = (a: number, b: number, c?: number | string): number => {
+  if (typeof c === "string") {
+    c = parseInt(c);
+    return a + b + c;
+  }
+  if (c) {
+    return a + b + c;
+  } else {
+    return a + b;
+  }
+};
+console.log(addAll(1, 2, "3"));
+
+const sumAll = (...numbers: number[]): number => {
+  return numbers.reduce((acc, curr) => acc + curr);
+};
+
+//default parameters
+const sumAll2 = (a: number = 10, b: number, c: number = 2): number => {
+  return a + b + c;
+};
+console.log(sumAll2(undefined, 2));
+
+// Rest parameters
+const total = (a: number, ...numbers: number[]): number => {
+  return a + numbers.reduce((acc, curr) => acc + curr);
+};
+console.log(total(1, 2, 3));
+
+const createError = (message: string, code?: number): never => {
+  throw { message, code };
+};
+
+//custom types guard
+
+const isString = (value: any): value is string => {
+  return typeof value === "string" ? true : false;
+};
+
+const isNumber = (value: any): boolean => {
+  return typeof value === "number" ? true : false;
+};
+
+const numberOrString = (value: number | string): string => {
+  if (isString(value)) {
+    return "string";
+  }
+  if (isNumber(value)) {
+    return "number";
+  }
+  return "unknown";
+};
