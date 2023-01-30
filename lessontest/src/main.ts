@@ -215,3 +215,8 @@ let nextVal: number = addOrConcat(2, 2, "concat") as number;
 10 as unknown as string;
 
 //DOM
+const myImg = document.getElementById("img") as HTMLImageElement;
+//not-null assertion operator
+const img = document.querySelector("img")!;
+img.src;
+const nextImg = <HTMLImageElement>document.getElementById("img");

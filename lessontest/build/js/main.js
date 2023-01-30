@@ -16,3 +16,8 @@ let nextVal = addOrConcat(2, 2, "concat");
 10;
 10;
 //DOM
+const myImg = document.getElementById("img");
+//not-null assertion operator
+const img = document.querySelector("img");
+img.src;
+const nextImg = document.getElementById("img");
