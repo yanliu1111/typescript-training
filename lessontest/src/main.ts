@@ -90,7 +90,7 @@ enum Grade {
 console.log(Grade.U);
 
 lesson 4 functions
-*/
+
 
 //Type aliases
 type stringOrNum = string | number;
@@ -183,5 +183,35 @@ const numberOrString = (value: number | string): string => {
   if (isNumber(value)) {
     return "number";
   }
-  return "unknown";
+    return "unknown";
 };
+lesson 5 asserions
+*/
+type One = string;
+type Two = string | number;
+type Three = "Hello";
+
+let a: One = "Hello";
+let b = a as Two; //less specific
+let c = a as Three; //more specific
+//not allowed in TXS in react
+let d = <One>"world";
+let e = <string | number>"world";
+
+const addOrConcat = (
+  a: number,
+  b: number,
+  c: "add" | "concat"
+): number | string => {
+  if (c === "add") return a + b;
+  return "" + a + b;
+};
+
+let myVal: string = addOrConcat(2, 2, "concat") as string;
+//Be careful with asserions
+let nextVal: number = addOrConcat(2, 2, "concat") as number;
+
+10 as string;
+10 as unknown as string;
+
+//DOM
