@@ -275,5 +275,34 @@ class Peeps {
     static getCount() {
         return Peeps.count; //access static property
     }
+    constructor(name) {
+        this.name = name;
+        this.id = ++Peeps.count; // first Peeps is 1, if Peeps.count++, first Peeps is 0
+    }
 }
 Peeps.count = 0;
+const Boo = new Peeps("Boo");
+const Steve = new Peeps("Steve");
+const Amy = new Peeps("Amy");
+console.log(Peeps.count);
+class Bands {
+    constructor() {
+        this.dataState = [];
+    }
+    get data() {
+        return this.dataState; //read only, beacuse no setter
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every((el) => typeof el === "string")) {
+            this.dataState = value;
+            return;
+        }
+        else
+            throw new Error("Param is not an array of string");
+    }
+}
+const myBands = new Bands();
+myBands.data = ["The Beatles", "The Rolling Stones", "The Who"];
+console.log(myBands.data);
+myBands.data = [...myBands.data, "The Doors"];
+console.log(myBands.data);
