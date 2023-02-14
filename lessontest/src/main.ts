@@ -186,7 +186,7 @@ const numberOrString = (value: number | string): string => {
     return "unknown";
 };
 lesson 5 asserions
-*/
+
 type One = string;
 type Two = string | number;
 type Three = "Hello";
@@ -220,3 +220,80 @@ const myImg = document.getElementById("img") as HTMLImageElement;
 const img = document.querySelector("img")!;
 img.src;
 const nextImg = <HTMLImageElement>document.getElementById("img");
+
+Lesson 6
+*/
+class Coder {
+  //constructor parameters are public by default
+  //different modifiers
+  constructor(
+    public readonly name: string,
+    public music: string,
+    private age: number,
+    protected lang: string = "TS"
+  ) {
+    this.name = name;
+    this.music = music;
+    this.age = age;
+    this.lang = lang;
+  }
+  public getAge() {
+    return `${this.name} is ${this.age} years old`; // accesses the age value inside of the class
+  }
+}
+//create instance of class
+const Bob = new Coder("Bob", "rock", 30);
+console.log(Bob.getAge()); // inside of the class, can access private
+// console.log(Bob.age); //private, cannot access
+// console.log(Bob.lang); //protected, cannot access
+
+class WebDev extends Coder {
+  constructor(
+    public computer: string,
+    name: string,
+    music: string,
+    age: number
+  ) {
+    super(name, music, age);
+    this.computer = computer;
+  }
+  public getLang() {
+    return `I write ${this.lang} code`;
+  }
+}
+//super is used to access the parent class
+const Sara = new WebDev("Mac", "Sara", "Lofi", 25);
+console.log(Sara.getLang());
+// console.log(Sara.age);
+// console.log(Sara.lang);
+
+//interface in class
+interface Musician {
+  name: string;
+  instrument: string;
+  play(action: string): string;
+}
+class Guitarist implements Musician {
+  name: string;
+  instrument: string;
+
+  constructor(name: string, instrument: string) {
+    this.name = name;
+    this.instrument = instrument;
+  }
+  play(action: string) {
+    return `${this.name} plays ${this.instrument} by ${action}`;
+  }
+}
+
+const Page = new Guitarist("Jimmy", "guitar");
+console.log(Page.play("strumming"));
+
+//static methods
+class Peeps {
+  static count: number = 0;
+
+  static getCount(): number {
+    return Peeps.count; //access static property
+  }
+}
