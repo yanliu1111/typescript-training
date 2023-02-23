@@ -418,7 +418,7 @@ const monthlyIncomes: Incomes = {
 for (const key in monthlyIncomes) {
   console.log(key, monthlyIncomes[key as keyof Incomes]);
 }
-*/
+
 //lesson 8 Generics
 const echo = <T>(arg: T): T => arg;
 const isObj = <T>(arg: T): boolean => {
@@ -506,57 +506,57 @@ const getUsersProperty = <T extends HasID, K extends keyof T>(
   return users.map((user) => user[key]);
 };
 
-// const usersArray = [
-//   {
-//     id: 1,
-//     name: "Leanne Graham",
-//     username: "Bret",
-//     email: "Sincere@april.biz",
-//     address: {
-//       street: "Kulas Light",
-//       suite: "Apt. 556",
-//       city: "Gwenborough",
-//       zipcode: "92998-3874",
-//       geo: {
-//         lat: "-37.3159",
-//         lng: "81.1496",
-//       },
-//     },
-//     phone: "1-770-736-8031 x56442",
-//     website: "hildegard.org",
-//     company: {
-//       name: "Romaguera-Crona",
-//       catchPhrase: "Multi-layered client-server neural-net",
-//       bs: "harness real-time e-markets",
-//     },
-//   },
-//   {
-//     id: 2,
-//     name: "Ervin Howell",
-//     username: "Antonette",
-//     email: "Shanna@melissa.tv",
-//     address: {
-//       street: "Victor Plains",
-//       suite: "Suite 879",
-//       city: "Wisokyburgh",
-//       zipcode: "90566-7771",
-//       geo: {
-//         lat: "-43.9509",
-//         lng: "-34.4618",
-//       },
-//     },
-//     phone: "010-692-6593 x09125",
-//     website: "anastasia.net",
-//     company: {
-//       name: "Deckow-Crist",
-//       catchPhrase: "Proactive didactic contingency",
-//       bs: "synergize scalable supply-chains",
-//     },
-//   },
-// ];
+const usersArray = [
+  {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496",
+      },
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets",
+    },
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618",
+      },
+    },
+    phone: "010-692-6593 x09125",
+    website: "anastasia.net",
+    company: {
+      name: "Deckow-Crist",
+      catchPhrase: "Proactive didactic contingency",
+      bs: "synergize scalable supply-chains",
+    },
+  },
+];
 
-// console.log(getUsersProperty(usersArray, "website"));
-// console.log(getUsersProperty(usersArray, "username"));
+console.log(getUsersProperty(usersArray, "website"));
+console.log(getUsersProperty(usersArray, "username"));
 
 const usersArray = [
   {
@@ -595,3 +595,46 @@ store.state = "Dave";
 const myState = new StateObject<(string | number | boolean)[]>([15, "Bob"]);
 myState.state = [1, "Dave", false];
 console.log(myState.state);
+*/
+
+// lesson 9 utility types
+//partial
+interface Assignment {
+  studentId: string;
+  title: string;
+  grade: number;
+  verified?: boolean;
+}
+const updateAssignment = (
+  assign: Assignment,
+  propsToUpdate: Partial<Assignment>
+): Assignment => {
+  return { ...assign, ...propsToUpdate };
+};
+const assign1: Assignment = {
+  studentId: "compsci123",
+  title: "Final Project",
+  grade: 0,
+};
+
+console.log(updateAssignment(assign1, { grade: 95 }));
+
+const assignGraded: Assignment = updateAssignment(assign1, { grade: 95 });
+//Ruquired and Readonly
+const recordAssignment = (assign: Required<Assignment>): Assignment => {
+  //send to database, etc
+  return assign;
+};
+const assighVerified: Readonly<Assignment> = {
+  ...assignGraded,
+  verified: true,
+};
+//we could put in an object and spread it in using ...
+recordAssignment({ ...assignGraded, verified: true });
+
+//Record
+const hexColorMap: Record<string, string> = {
+  red: "#ff0000",
+  green: "#00ff00",
+  blue: "#0000ff",
+};
