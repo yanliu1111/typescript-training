@@ -638,3 +638,15 @@ const hexColorMap: Record<string, string> = {
   green: "#00ff00",
   blue: "#0000ff",
 };
+//key is string, and value is string
+//union type and sting literal type
+type Students = "Bob" | "Alice" | "Dave";
+type LetterGrades = "A" | "B" | "C" | "D" | "U";
+
+const finalGrades: Record<Students, LetterGrades> = {
+  Bob: "A",
+  Alice: "B",
+  Dave: "C",
+};
+
+type AssignResult = Pick<Assignment, "studentId" | "grade">;
