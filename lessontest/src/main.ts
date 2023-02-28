@@ -621,6 +621,7 @@ console.log(updateAssignment(assign1, { grade: 95 }));
 
 const assignGraded: Assignment = updateAssignment(assign1, { grade: 95 });
 //Ruquired and Readonly
+// now that all properties are required, we can use the spread operator to create a new object with the same properties
 const recordAssignment = (assign: Required<Assignment>): Assignment => {
   //send to database, etc
   return assign;
