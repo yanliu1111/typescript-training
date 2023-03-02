@@ -715,7 +715,7 @@ const fetchUsers = async (): Promise<User[]> => {
     });
   return data;
 };
-
+//we can accurately get that return type if we use the Awaited utility type
 type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>;
 
 fetchUsers().then((users) => console.log(users));
