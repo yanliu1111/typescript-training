@@ -1,8 +1,8 @@
-# Notebook using Vitejs and TypeScript
+# 📚 Notebook using Vitejs and TypeScript
 
 This is my first project using vitejs + typescript, some functions and typescript usages are not clear when I coding, so I write my quesitons and answers here. I didn't include all the questions, just some important ones. Check the code for more details.
 
-## create a new project
+## 🎯 Create a new project
 
 ```bash
 npm init vite@latest vite-ts-project -- --template vue-ts
@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-## some learning notes
+## 💡 Some learning notes
 
 ## 1. getters and setters
 
