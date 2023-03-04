@@ -30,6 +30,7 @@ export default class ListTemplate implements DOMList {
       check.id = item.id;
       check.tabIndex = 0; // why didnt refer to the underscore? because it is a getter, so it is a property, not a method
       check.checked = item.checked; // boolean
+      li.append(check);
 
       check.addEventListener("change", () => {
         item.checked = !item.checked;
