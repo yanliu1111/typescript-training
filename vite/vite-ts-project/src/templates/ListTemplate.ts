@@ -9,7 +9,8 @@ export default class ListTemplate implements DOMList {
   ul: HTMLUListElement;
 
   static instance: ListTemplate = new ListTemplate(); //why static? because I want to create a single instance of the class, so that the class can be used as a singleton, and keep referring to that instance, because we only have one list in our application
-
+  // what is singleton?
+  // a singleton is a class that can only be instantiated once, so we can only have one instance of the class, and we can only have one list in our application, so we want to make sure that we only have one instance of the class, so we can only have one list in our application
   private constructor() {
     this.ul = document.getElementById("listItems") as HTMLUListElement;
   }
