@@ -2,10 +2,10 @@ import { ReactNode } from "react";
 
 interface ListProps<T> {
   items: T[];
-  renderItem: (item: T) => ReactNode;
+  render: (item: T) => ReactNode;
 }
 
-const List = <T>({ items, render }: ListProps<T>) => {
+const List = <T,>({ items, render }: ListProps<T>) => {
   return (
     <ul>
       {items.map((item, index) => (
