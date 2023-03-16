@@ -4,7 +4,7 @@ import Counter from "./components/Counter";
 import List from "./components/List";
 
 import { useState } from "react";
-function App() {
+function App_class() {
   const [count, setCount] = useState<number>(1);
 
   return (
@@ -19,5 +19,4 @@ function App() {
     </>
   );
 }
-
-export default App;
+export default App_class;
