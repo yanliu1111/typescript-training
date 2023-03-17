@@ -1,8 +1,15 @@
-import { ChangeEvent, createContext, ReactElement, useReducer } from "react";
+import {
+  ChangeEvent,
+  createContext,
+  ReactElement,
+  useReducer,
+  useCallback,
+  useContext,
+} from "react";
 //first step: instead of typeof initState, we can use the type StateType
 type StateType = { count: number; text: string };
 
-const initState: StateType = { count: 0, text: "" };
+export const initState: StateType = { count: 0, text: "" };
 
 const enum REDUCER_ACTION_TYPE {
   INCREMENT,
@@ -31,13 +38,19 @@ const reducer = (state: StateType, action: ReducerAction): StateType => {
 const useCounterContext = (initState: StateType) => {
   const [state, dispatch] = useReducer(reducer, initState);
 
-  const increment = () => dispatch({ type: REDUCER_ACTION_TYPE.INCREMENT });
+  const increment = useCallback(
+    () => dispatch({ type: REDUCER_ACTION_TYPE.INCREMENT }),
+    []
+  );
 
-  const decrement = () => dispatch({ type: REDUCER_ACTION_TYPE.DECREMENT });
+  const decrement = useCallback(
+    () => dispatch({ type: REDUCER_ACTION_TYPE.DECREMENT }),
+    []
+  );
 
-  const handleTextInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleTextInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: REDUCER_ACTION_TYPE.NEW_INPUT, payload: e.target.value });
-  };
+  }, []);
 
   return { state, increment, decrement, handleTextInput };
 };
@@ -66,4 +79,32 @@ export const CounterProvider = ({
       {children}
     </CounterContext.Provider>
   );
+};
+
+type UseCounterHookTypeType = {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+};
+
+export const useCounterHook = (): UseCounterHookTypeType => {
+  const {
+    state: { count },
+    increment,
+    decrement,
+  } = useContext(CounterContext);
+  return { count, increment, decrement };
+};
+
+type UseCounterTextHookType = {
+  text: string;
+  handleTextInput: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+export const useCounterTextHook = (): UseCounterTextHookType => {
+  const {
+    state: { text },
+    handleTextInput,
+  } = useContext(CounterContext);
+  return { text, handleTextInput };
 };
