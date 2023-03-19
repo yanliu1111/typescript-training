@@ -80,7 +80,7 @@ export const CounterProvider = ({
     </CounterContext.Provider>
   );
 };
-
+//create a custom hook to use the context
 type UseCounterHookTypeType = {
   count: number;
   increment: () => void;
