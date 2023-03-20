@@ -1,6 +1,6 @@
-# Typescript-training
+# 🐰 Typescript-training
 
-**Courses covered:**
+**Practice covered:**
 
 - Lesson1: Start Here
 - Lesson2: Basic Types
@@ -18,9 +18,9 @@
 - Lesson14: React useReducer + TypeScript
 - Lesson15: React useContext + TypeScript
 
-Hooks learning note published in my (code blog)[]
+Hooks learning note published in my [**Code Blog**](https://www.yancodeblog.codes/)
 
-# 📚Reference
+# 📚 Reference
 
 Learning from Youtuber [Dave Gray](https://www.youtube.com/watch?v=gieEQFIfgYc&ab_channel=DaveGray)
 Coures Practice done.
