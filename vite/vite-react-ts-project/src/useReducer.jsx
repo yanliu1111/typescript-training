@@ -17,6 +17,9 @@ function reducer(state, action) {
 
 export default function ReducerTest() {
   const [state, dispatch] = useReducer(reducer, { name: "John", age: 20 });
+
+  //reducer is similar to useState, but it can handle more complex state changes
+  //useReducer is usually preferable to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one.
   function handleInputChanged(e) {
     dispatch({ type: "Name", nextName: e.target.value });
   }
