@@ -38,3 +38,15 @@ console.log(greetGuitarist(evh));
 
 //enum
 //"unlike most ts features, enums are not a type-level addition to js but something added to the language and runtime itself"
+
+const logMsg = (message: any): void => {
+  console.log(message);
+};
+//void is a type that represents the absence of a value, no return value
+
+//type vs interface
+type mathfunction = (a: number, b: number) => number;
+
+interface mathfunction2 {
+  (a: number, b: number): number;
+}
