@@ -50,3 +50,17 @@ type mathfunction = (a: number, b: number) => number;
 interface mathfunction2 {
   (a: number, b: number): number;
 }
+
+//rest parameters
+const total = (...nums: number[]): number => {
+  return nums.reduce((a, b) => a + b);
+};
+
+const total2 = (a: number, ...nums: number[]): number => {
+  return nums.reduce((a, b) => a + b);
+  //return a + nums.reduce((a, b) => a + b);
+};
+//never type, also while loop infinite return never type
+const error = (message: string): never => {
+  throw new Error(message);
+};
