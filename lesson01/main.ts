@@ -64,3 +64,44 @@ const total2 = (a: number, ...nums: number[]): number => {
 const error = (message: string): never => {
   throw new Error(message);
 };
+
+//Assertion
+type One = string;
+type Two = string | number;
+type Three = 'Hello';
+
+//but cannot use <> in react
+let d = <One>'World'; //alliase
+let e = <string | number>'World'; //directly
+
+const addOrConcat = (
+  a: number,
+  b: number,
+  c: 'add' | 'concat'
+): number | string => {
+  if (c === 'add') return a + b;
+  return 'a' + 'b';
+};
+//assertion is `as string`
+let myVal: string = addOrConcat(1, 2, 'concat') as string;
+//dom
+const img = document.getElementById('img') as HTMLImageElement;
+const myImg = document.getElementById('#img')!; //non-null assertion operator
+const nextImg = <HTMLImageElement>document.getElementById('#img'); // cannot use in tsx file for react
+img.src = 'https://picsum.photos/200';
+myImg.src;
+
+//type guard, check it exists or not
+// let year: HTMLElement | null;
+// year = document.getElementById('year');
+// let thisYear: string;
+// thisYear = new Date().getFullYear().toString();
+// if (year) {
+//   year.setAttribute('datetime', thisYear);
+//   year.textContent = thisYear;
+// }
+//second way assertion
+let year = document.getElementById('year') as HTMLSpanElement;
+let thisYear: string = new Date().getFullYear().toString();
+year.setAttribute('datetime', thisYear);
+year.textContent = thisYear;
