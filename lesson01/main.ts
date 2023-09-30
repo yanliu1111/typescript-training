@@ -204,4 +204,61 @@ console.log(myBands.data); //getter
 myBands.data = [...myBands.data, 'The Doors'];
 console.log(myBands.data);
 
-//lesson 7
+//lesson 7 index signature and keyof assertions
+//assess the index dynamically with loop use
+// interface TransactionObj {
+//   readonly [key: string]: number;
+// }
+
+interface TransactionObj {
+  readonly [key: string]: number; //index signature
+  Pizza: number;
+  Books: number;
+  Job: number;
+}
+
+const todaysTransactions: TransactionObj = {
+  Pizza: 25,
+  Books: 45,
+  Job: -25,
+};
+
+let prop: string = 'Pizza';
+console.log(todaysTransactions[prop]);
+
+const todaysNet = (transactions: TransactionObj): number => {
+  let net = 0;
+  for (let transaction in transactions) {
+    net += transactions[transaction];
+  }
+  return net;
+};
+
+console.log(todaysNet(todaysTransactions));
+//keyof is for create union type and the union type is the specific string literal
+//two types
+interface Student {
+  // [key: string]: string | number | number[] | undefined;
+  name: string;
+  GPA: number;
+  classes?: number[];
+}
+
+const student: Student = {
+  name: 'Bob',
+  GPA: 3.5,
+  classes: [100, 200],
+};
+//three types
+for (const key in student) {
+  console.log(`${key}: ${student[key as keyof Student]}`);
+}
+
+Object.keys(student).map((key) => {
+  console.log(student[key as keyof typeof student]);
+});
+
+const logStudentKey = (student: Student, key: keyof Student): void => {
+  console.log(`Student ${key}: ${student[key]}`);
+};
+logStudentKey(student, 'GPA');
