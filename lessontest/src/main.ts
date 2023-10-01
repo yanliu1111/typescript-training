@@ -612,8 +612,8 @@ const updateAssignment = (
   return { ...assign, ...propsToUpdate };
 };
 const assign1: Assignment = {
-  studentId: "compsci123",
-  title: "Final Project",
+  studentId: 'compsci123',
+  title: 'Final Project',
   grade: 0,
 };
 
@@ -635,43 +635,55 @@ recordAssignment({ ...assignGraded, verified: true });
 
 //Record
 const hexColorMap: Record<string, string> = {
-  red: "#ff0000",
-  green: "#00ff00",
-  blue: "#0000ff",
+  red: '#ff0000',
+  green: '#00ff00',
+  blue: '#0000ff',
 };
 //key is string, and value is string
 //union type and sting literal type
-type Students = "Bob" | "Alice" | "Dave";
-type LetterGrades = "A" | "B" | "C" | "D" | "U";
+type Students = 'Bob' | 'Alice' | 'Dave';
+type LetterGrades = 'A' | 'B' | 'C' | 'D' | 'U';
 
 const finalGrades: Record<Students, LetterGrades> = {
-  Bob: "A",
-  Alice: "B",
-  Dave: "C",
+  Bob: 'A',
+  Alice: 'B',
+  Dave: 'C',
 };
+// interface
+interface Grades {
+  assign1: number;
+  assign2: number;
+}
+
+const gradeData: Record<Students, Grades> = {
+  Bob: { assign1: 100, assign2: 90 },
+  Alice: { assign1: 90, assign2: 95 },
+  Dave: { assign1: 80, assign2: 100 },
+};
+
 // Pick and Omit
-type AssignResult = Pick<Assignment, "studentId" | "grade">;
+type AssignResult = Pick<Assignment, 'studentId' | 'grade'>;
 const score: AssignResult = {
-  studentId: "k123",
+  studentId: 'k123',
   grade: 85,
 };
 
-type AssignPreview = Omit<Assignment, "grade" | "verified">;
+type AssignPreview = Omit<Assignment, 'grade' | 'verified'>;
 
 const preview: AssignPreview = {
-  studentId: "k123",
-  title: "Final Project",
+  studentId: 'k123',
+  title: 'Final Project',
 };
 
 // Exclude and Extract
 
-type adjustedGrade = Exclude<LetterGrades, "U">;
+type adjustedGrade = Exclude<LetterGrades, 'U'>;
 
-type highGrades = Extract<LetterGrades, "A" | "B">;
+type highGrades = Extract<LetterGrades, 'A' | 'B'>;
 
 // Nonnullable
 
-type AllPossibleGrades = "Dave" | "John" | null | undefined;
+type AllPossibleGrades = 'Dave' | 'John' | null | undefined;
 type NamesOnly = NonNullable<AllPossibleGrades>;
 
 // ReturnType
@@ -684,14 +696,14 @@ const createNewAssign = (title: string, points: number) => {
 
 type NewAssign = ReturnType<typeof createNewAssign>;
 
-const tsAssign: NewAssign = createNewAssign("Utility Types", 100);
+const tsAssign: NewAssign = createNewAssign('Utility Types', 100);
 console.log(tsAssign);
 
-// Parameters
+// Parameters utility type
 
 type AssignParams = Parameters<typeof createNewAssign>;
 
-const assignArgs: AssignParams = ["Generics", 100];
+const assignArgs: AssignParams = ['Generics', 100];
 
 const tsAssign2: NewAssign = createNewAssign(...assignArgs);
 console.log(tsAssign2);
@@ -706,7 +718,7 @@ interface User {
 }
 
 const fetchUsers = async (): Promise<User[]> => {
-  const data = await fetch("https://jsonplaceholder.typicode.com/users")
+  const data = await fetch('https://jsonplaceholder.typicode.com/users')
     .then((res) => {
       return res.json();
     })
