@@ -4,11 +4,11 @@ export interface Item {
   checked: boolean;
 }
 //underscore is passed to the constructor to avoid the error as the constructor is not a property of the class, but a parameter. as private _id: string = "" is a property of the class
-
+// getter and setter are used to access the private properties of the class, _id, _item, _checked
 export default class ListItem implements Item {
   constructor(
-    private _id: string = "",
-    private _item: string = "",
+    private _id: string = '',
+    private _item: string = '',
     private _checked: boolean = false
   ) {} //empty because we are using the constructor to set the values, we do not have to have any assignments in the constructor
   //although if you do it's not illegal syntax, it double it up when complie to js, so you have two assignments
