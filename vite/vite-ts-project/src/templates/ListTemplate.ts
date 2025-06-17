@@ -1,8 +1,9 @@
 import FullList from "../model/FullList";
+
 interface DOMList {
-  ul: HTMLUListElement;
-  clear(): void;
-  render(fullList: FullList): void;
+  ul: HTMLUListElement; // HTMLUListElement is a type that represents an unordered list element in the DOM
+  clear(): void; // clear the list on the DOM, we don't want to have duplicates
+  render(fullList: FullList): void; // render the list on the DOM, we want to create the list items and append them to the ul element, fullList is the instance of the FullList class 
 }
 
 export default class ListTemplate implements DOMList {
