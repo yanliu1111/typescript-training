@@ -18,7 +18,7 @@
 - Lesson14: React useReducer + TypeScript
 - Lesson15: React useContext + TypeScript
 
-Hooks learning note published in my [**Code Blog**](https://www.yancodeblog.codes/)
+Hooks learning note published in my [**Code Blog**](https://nextjs-ts-my-markdown-blog-66cwkyso0-yanliu1111.vercel.app/)
 
 # 📚 Reference
 
