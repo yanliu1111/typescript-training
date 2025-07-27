@@ -24,3 +24,5 @@ Hooks learning note published in my [**Code Blog**](https://nextjs-ts-my-markdow
 
 Learning from Youtuber [Dave Gray](https://www.youtube.com/watch?v=gieEQFIfgYc&ab_channel=DaveGray)
 Coures Practice done.
+
+review day
