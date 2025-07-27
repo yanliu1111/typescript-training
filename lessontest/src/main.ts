@@ -34,8 +34,10 @@ let test = [];
 let bands: string[] = [];
 bands.push("Van Halen");
 
+//Tuple is a fixed length array with specific types
 let myTuple: [string, number, boolean] = ["bob", 30, true];
 
+// Objects
 let myObj: object;
 myObj = [];
 console.log(typeof myObj);
@@ -48,6 +50,7 @@ const exampleObj = {
 
 exampleObj.prop1 = "world";
 
+interface is used to define the shape of an object, like a contract. it can be used to define the structure of an object, and can be extended or implemented by classes
 interface Guitarist {
   name?: string;
   active?: boolean;
@@ -79,6 +82,7 @@ const greetGuitarist = (guitarist: Guitarist) => {
 console.log(greetGuitarist(evh));
 
 //Enums
+"Unlike most TS features, enums are not a type-level addition to JS but something added to the language and runtime";
 
 enum Grade {
   U = 1,
@@ -90,7 +94,6 @@ enum Grade {
 console.log(Grade.U);
 
 lesson 4 functions
-
 
 //Type aliases
 type stringOrNum = string | number;
